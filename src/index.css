@@ -1,0 +1,245 @@
+/* ==========================================================================
+   FitTrack - Design System & Global Styles
+   Athletic Dark Theme with Glassmorphism, Micro-interactions & Vibrant Accents
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Surfaces & Backgrounds */
+  --bg-base: #070A0F;
+  --bg-surface: #0E131F;
+  --bg-surface-elevated: #141B2D;
+  --bg-surface-active: #1D263B;
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(14, 19, 31, 0.72);
+  --glass-bg-card: rgba(18, 25, 41, 0.65);
+  --glass-bg-hover: rgba(25, 35, 58, 0.8);
+  --glass-bg-input: rgba(11, 16, 26, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.18);
+  --glass-blur: blur(16px);
+  --glass-blur-heavy: blur(24px);
+
+  /* Primary Accent: Electric Neon Lime / Green */
+  --lime-primary: #00F59B;
+  --lime-neon: #10B981;
+  --lime-vibrant: #22C55E;
+  --lime-dark: #059669;
+  --lime-glow: 0 0 24px rgba(0, 245, 155, 0.35);
+  --lime-glow-subtle: 0 0 12px rgba(0, 245, 155, 0.2);
+  --lime-bg-subtle: rgba(0, 245, 155, 0.1);
+  --lime-border: rgba(0, 245, 155, 0.3);
+
+  /* Secondary Accent: Electric Cyan */
+  --cyan-primary: #00E5FF;
+  --cyan-neon: #06B6D4;
+  --cyan-vibrant: #38BDF8;
+  --cyan-glow: 0 0 24px rgba(0, 229, 255, 0.35);
+  --cyan-bg-subtle: rgba(0, 229, 255, 0.1);
+  --cyan-border: rgba(0, 229, 255, 0.3);
+
+  /* Secondary Accent: Energetic Coral / Rose */
+  --coral-primary: #FF3B5C;
+  --coral-neon: #F43F5E;
+  --coral-vibrant: #FB7185;
+  --coral-glow: 0 0 24px rgba(255, 59, 92, 0.35);
+  --coral-bg-subtle: rgba(255, 59, 92, 0.1);
+  --coral-border: rgba(255, 59, 92, 0.3);
+
+  /* Typography Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-inverse: #070A0F;
+
+  /* Font Families */
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.5);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+}
+
+/* ==========================================================================
+   CSS Reset & Base
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(0, 245, 155, 0.07) 0%, transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(0, 229, 255, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(255, 59, 92, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* Glassmorphism Helper Classes */
+.glass-card {
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glass);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.glass-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-heavy);
+  -webkit-backdrop-filter: var(--glass-blur-heavy);
+  border: 1px solid var(--glass-border);
+}
+
+/* Micro-interaction & Keyframe Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(0, 245, 155, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(0, 245, 155, 0.45);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes flamePulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(255, 59, 92, 0.6));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(255, 59, 92, 0.9));
+    transform: scale(1.06);
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-flame {
+  animation: flamePulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: subtleFloat 4s ease-in-out infinite;
+}
+
+/* Skeleton / Shimmer placeholder effect */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.08) 37%,
+    rgba(255, 255, 255, 0.04) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.8s ease infinite;
+}
+
+/* Utility Badges */
+.badge-lime {
+  background: var(--lime-bg-subtle);
+  color: var(--lime-primary);
+  border: 1px solid var(--lime-border);
+}
+
+.badge-cyan {
+  background: var(--cyan-bg-subtle);
+  color: var(--cyan-primary);
+  border: 1px solid var(--cyan-border);
+}
+
+.badge-coral {
+  background: var(--coral-bg-subtle);
+  color: var(--coral-primary);
+  border: 1px solid var(--coral-border);
+}
